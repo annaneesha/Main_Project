@@ -1,0 +1,87 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4..5/jquery.mobile-1.4.5.min.js"></script>
+
+
+    <title>Edit User Info</title>
+</head>
+
+<body class="signup" style="background-image:url(images/bg8.jpg)">
+    <div class="signupform">
+        <img src="images/usericon.jpg">
+
+        <h1>Edit Profile</h1>
+        <div class="input">
+            <form id="edituserinfo_form">
+                <input type="text" id="form_username" class="input-box" name="form_username"
+                    placeholder="Name"><br><span class="error_form" id="username_error_message"></span>
+                <input type="password" type="password" id="form_password" class="input-box" name="form_password"
+                    placeholder="Password"><br><span class="error_form" id="password_error_message"></span>
+
+                <input type="number" id="form_age" class="input-box" name="form_age" placeholder="Age"><br><span
+                    class="error_form" id="firstname_error_message"></span>
+                <input type="number" id="form_phone" class="input-box" name="form_phone"
+                    placeholder="Phone Number"><br><span class="error_form" id="phone_error_message"></span>
+                <input type="text" id="form_email" class="input-box" name="form_email" placeholder="Email"><br><span
+                    class="error_form" id="email_error_message"></span>
+                <button type="submit" class="sign_sbmt_btn" id="sign_sbmt_btn">Save</button>
+
+                <script>
+                    $(document).ready(function () {
+                        var userId = window.location.hash.substring(1, 2);
+                        function getUserDetail() {
+                            $.post("http://localhost:5000/getUserDetail", { userId }, (data, status) => {
+                                if (data.status == 200) {
+                                    if (data.result[0]) {
+                                        var details = data.result[0];
+                                        console.log(details);
+                                        $("#form_username").val(details.name);
+                                        $("#form_password").val(details.password);
+                                        $("#form_age").val(details.age);
+                                        $("#form_phone").val(details.phonenumber);
+                                        $("#form_email").val(details.email);
+                                    }
+                                }
+                            });
+                        }
+                        window.onload = getUserDetail;
+                        
+                        $("#edituserinfo_form").submit(function () {
+                            var username = $("#form_username").val();
+                            var password = $("#form_password").val();
+                            var age = $("#form_age").val();
+                            var phonenumber = $("#form_phone").val();
+                            var email = $("#form_email").val(); 
+                            
+                            $.post("http://localhost:5000/edituser", { userId, username, password, age, phonenumber, email }, (data, status) => {
+                                if (data.status == 200) {
+                                    console.log(status, data, 'status');
+                                    // alert(Data Updated);
+                                    // window.location.href = 'login.html';
+                                    // $("#form_username").val("");
+                                    // $("#form_password").val("");
+                                    // $("#form_age").val("");
+                                    // $("#form_phone").val("");
+                                    // $("#form_email").val("");
+                                }
+                            });
+                            
+                        });
+
+
+                    });
+
+
+
+                </script>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

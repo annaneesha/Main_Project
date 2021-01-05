@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="./js/signup.js"></script>
+
+
+    <title>Form Validation in jQuery</title>
+</head>
+
+<body class="signup" style="background-image:url(images/bg8.jpg)">
+    <div class="signupform">
+        <img src="images/usericon.jpg">
+
+        <h1>Create an Account</h1>
+        <div class="input">
+            <form id="registration_form">
+                <input type="text" id="form_username" class="input-box" name="form_username"
+                    placeholder="Name"><br><span class="error_form" id="username_error_message"></span>
+                <input type="password" id="form_password" class="input-box" name="form_password"
+                    placeholder="Password"><br><span class="error_form" id="password_error_message"></span>
+                <input type="number" id="form_age" class="input-box" name="form_age" placeholder="Age"><br><span
+                    class="error_form" id="age_error_message"></span>
+                <input type="number" id="form_phone" class="input-box" name="form_phone"
+                    placeholder="Phone Number"><br><span class="error_form" id="phone_error_message"></span>
+                <input type="text" id="form_email" class="input-box" name="form_email" placeholder="Email"><br><span
+                    class="error_form" id="email_error_message"></span>
+                <button type="submit" class="sign_sbmt_btn" id="sign_sbmt_btn">Create Account</button>
+            </form>
+            <div>
+                <a href="login.html">Login Here..</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
